@@ -199,6 +199,7 @@ function Navbar({
       style={{ background: PAPER, borderColor: "rgba(21,20,15,0.12)" }}
     >
       <nav className="mx-auto flex max-w-[1500px] items-center justify-between px-5 py-4 md:px-8">
+        {/* TODO: placeholder href, point at the real homepage/logo destination */}
         <a href="#" className={`${DISPLAY} text-2xl tracking-tight`}>
           TRSHPNDA
         </a>
@@ -400,6 +401,7 @@ function Catalog() {
       <div className="mx-auto max-w-[1500px]">
         <div className="mb-12 flex flex-col justify-between gap-4 md:flex-row md:items-end">
           <h2 className={`${DISPLAY} text-4xl md:text-6xl`}>New in the shop</h2>
+          {/* TODO: placeholder href, point at the full catalog/shop page */}
           <a href="#" className="text-sm font-medium underline">
             View full catalog
           </a>
@@ -820,6 +822,7 @@ function Footer() {
 
           <div>
             <p className="mb-4 text-sm font-medium">Support</p>
+            {/* TODO: placeholder hrefs, point each at its real support page */}
             <div className="flex flex-col gap-2.5 text-sm" style={{ color: "rgba(245,241,230,0.65)" }}>
               <a href="#" className="hover:text-white">Shipping</a>
               <a href="#" className="hover:text-white">Returns</a>
@@ -834,6 +837,7 @@ function Footer() {
           style={{ borderColor: "rgba(245,241,230,0.15)", color: "rgba(245,241,230,0.4)" }}
         >
           <p>© {new Date().getFullYear()} TRSHPNDA. All rights reserved.</p>
+          {/* TODO: placeholder hrefs, point each at its real legal/social destination */}
           <div className="flex gap-5">
             <a href="#" className="hover:text-white">Privacy</a>
             <a href="#" className="hover:text-white">Terms</a>
