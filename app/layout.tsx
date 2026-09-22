@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import { ReactLenis } from "lenis/react";
 import {
   OrganizationSchema,
@@ -105,6 +106,7 @@ export default function RootLayout({
         <ReactLenis root options={{ lerp: 0.1, duration: 1.2 }}>
           {children}
         </ReactLenis>
+        <Analytics />
       </body>
     </html>
   );
