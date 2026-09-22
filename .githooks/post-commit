@@ -1,0 +1,11 @@
+#!/bin/sh
+# Advisory only: the commit already happened, so this can't block it.
+# Confirms the commit still produces a deployable production build.
+
+echo "post-commit: verifying production build..."
+
+if npm run build > /dev/null 2>&1; then
+  echo "post-commit: build OK, this commit is safe to deploy."
+else
+  echo "post-commit: WARNING — production build failed on this commit. Fix before deploying." >&2
+fi

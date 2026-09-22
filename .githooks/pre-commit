@@ -1,0 +1,9 @@
+#!/bin/sh
+# Blocks the commit if lint or type checks fail.
+set -e
+
+echo "pre-commit: running lint..."
+npm run lint
+
+echo "pre-commit: running type check..."
+npm run typecheck
