@@ -161,7 +161,6 @@ export default function Home() {
       className={`${anton.variable} min-h-screen`}
       style={{ background: PAPER, color: INK }}
     >
-      {/* <Navbar mobileMenu={mobileMenu} setMobileMenu={setMobileMenu} /> */}
       <CapViewer artworkUrl="/fabric_normals.png" />
       <Hero />
       <Ticker />
