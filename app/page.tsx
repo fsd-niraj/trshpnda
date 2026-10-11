@@ -5,6 +5,7 @@ import { Anton } from "next/font/google";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Search, ShoppingBag, Scissors, Tag } from "lucide-react";
 import { useState, type SubmitEvent } from "react";
+import { CapViewer } from "@/components";
 
 const anton = Anton({
   subsets: ["latin"],
@@ -41,7 +42,7 @@ const products: Product[] = [
     description: "Structured everyday cap",
     price: 45,
     image:
-      "https://images.unsplash.com/photo-1521369909029-2afed882baee?q=80&w=1200&auto=format&fit=crop",
+      "/images/img2.jpeg",
   },
   {
     id: "washed-stone",
@@ -52,7 +53,7 @@ const products: Product[] = [
     description: "Vintage-wash cotton cap",
     price: 48,
     image:
-      "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?q=80&w=1200&auto=format&fit=crop",
+      "/images/img2.jpeg",
   },
   {
     id: "forest",
@@ -63,7 +64,7 @@ const products: Product[] = [
     description: "Minimal embroidered cap",
     price: 45,
     image:
-      "https://images.unsplash.com/photo-1575428652377-a2d80e2277fc?q=80&w=1200&auto=format&fit=crop",
+      "/images/img2.jpeg",
   },
   {
     id: "off-white",
@@ -74,7 +75,7 @@ const products: Product[] = [
     description: "Everyday canvas cap",
     price: 45,
     image:
-      "https://images.unsplash.com/photo-1534215754734-18e55d13e346?q=80&w=1200&auto=format&fit=crop",
+      "/images/img2.jpeg",
   },
 ];
 
@@ -83,7 +84,7 @@ const collections = [
     title: "Everyday",
     description: "Clean silhouettes built for the nine-to-five and the walk after it.",
     image:
-      "https://images.unsplash.com/photo-1521369909029-2afed882baee?q=80&w=1600&auto=format&fit=crop",
+      "/images/img4.jpeg",
     kind: "photo" as const,
   },
   {
@@ -96,7 +97,7 @@ const collections = [
     title: "Structured",
     description: "Sharper crowns, a cleaner brim, the same easy fit.",
     image:
-      "https://images.unsplash.com/photo-1575428652377-a2d80e2277fc?q=80&w=1200&auto=format&fit=crop",
+      "/images/img4.jpeg",
     kind: "photo" as const,
   },
   {
@@ -132,12 +133,12 @@ const tickets = [
 ];
 
 const community = [
-  "https://images.unsplash.com/photo-1521369909029-2afed882baee?q=80&w=800&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?q=80&w=800&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1575428652377-a2d80e2277fc?q=80&w=800&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1534215754734-18e55d13e346?q=80&w=800&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=800&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1556306535-0f09a537f0a3?q=80&w=800&auto=format&fit=crop",
+  "/images/img1.jpeg",
+  "/images/img2.jpeg",
+  "/images/img4.jpeg",
+  "/images/img3.jpeg",
+  "/images/img5.jpeg",
+  "/images/img6.jpeg",
 ];
 
 const tilts = [-3, 2, -2, 3, -1, 2];
@@ -149,8 +150,8 @@ const navLinks = [
   { label: "About", href: "#about" },
 ];
 
+
 export default function Home() {
-  const [mobileMenu, setMobileMenu] = useState(false);
   const [selected, setSelected] = useState(products[0]);
   const [email, setEmail] = useState("");
   const [subscribed, setSubscribed] = useState(false);
@@ -160,7 +161,8 @@ export default function Home() {
       className={`${anton.variable} min-h-screen`}
       style={{ background: PAPER, color: INK }}
     >
-      <Navbar mobileMenu={mobileMenu} setMobileMenu={setMobileMenu} />
+      {/* <Navbar mobileMenu={mobileMenu} setMobileMenu={setMobileMenu} /> */}
+      <CapViewer artworkUrl="/fabric_normals.png" />
       <Hero />
       <Ticker />
       <Catalog />
