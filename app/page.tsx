@@ -5,6 +5,7 @@ import { Anton } from "next/font/google";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Search, ShoppingBag, Scissors, Tag } from "lucide-react";
 import { useState, type SubmitEvent } from "react";
+import { collections, community, INK, navLinks, PAPER, Product, products, specs, tickets, tilts, CREAM, GOLD } from "./data";
 
 const anton = Anton({
   subsets: ["latin"],
@@ -13,141 +14,6 @@ const anton = Anton({
 });
 
 const DISPLAY = "font-[family-name:var(--font-anton)]";
-
-const INK = "#15140F";
-const PAPER = "#EDE8DC";
-const GOLD = "#F2B134";
-const BRICK = "#B3492F";
-const CREAM = "#F5F1E6";
-
-type Product = {
-  id: string;
-  sku: string;
-  name: string;
-  swatchName: string;
-  swatchHex: string;
-  description: string;
-  price: number;
-  image: string;
-};
-
-const products: Product[] = [
-  {
-    id: "classic-black",
-    sku: "PT-014",
-    name: "Classic Black",
-    swatchName: "Jet",
-    swatchHex: "#17140F",
-    description: "Structured everyday cap",
-    price: 45,
-    image:
-      "https://images.unsplash.com/photo-1521369909029-2afed882baee?q=80&w=1200&auto=format&fit=crop",
-  },
-  {
-    id: "washed-stone",
-    sku: "PT-021",
-    name: "Washed Stone",
-    swatchName: "Stone",
-    swatchHex: "#A49B8C",
-    description: "Vintage-wash cotton cap",
-    price: 48,
-    image:
-      "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?q=80&w=1200&auto=format&fit=crop",
-  },
-  {
-    id: "forest",
-    sku: "PT-032",
-    name: "Forest",
-    swatchName: "Pine",
-    swatchHex: "#344438",
-    description: "Minimal embroidered cap",
-    price: 45,
-    image:
-      "https://images.unsplash.com/photo-1575428652377-a2d80e2277fc?q=80&w=1200&auto=format&fit=crop",
-  },
-  {
-    id: "off-white",
-    sku: "PT-045",
-    name: "Off-White",
-    swatchName: "Bone",
-    swatchHex: "#E7E2D8",
-    description: "Everyday canvas cap",
-    price: 45,
-    image:
-      "https://images.unsplash.com/photo-1534215754734-18e55d13e346?q=80&w=1200&auto=format&fit=crop",
-  },
-];
-
-const collections = [
-  {
-    title: "Everyday",
-    description: "Clean silhouettes built for the nine-to-five and the walk after it.",
-    image:
-      "https://images.unsplash.com/photo-1521369909029-2afed882baee?q=80&w=1600&auto=format&fit=crop",
-    kind: "photo" as const,
-  },
-  {
-    title: "Washed",
-    description: "Vintage-dyed cotton that only gets better with wear.",
-    kind: "color" as const,
-    color: GOLD,
-  },
-  {
-    title: "Structured",
-    description: "Sharper crowns, a cleaner brim, the same easy fit.",
-    image:
-      "https://images.unsplash.com/photo-1575428652377-a2d80e2277fc?q=80&w=1200&auto=format&fit=crop",
-    kind: "photo" as const,
-  },
-  {
-    title: "Small batch",
-    description: "Cut and sewn in short runs. Once they're gone, they're gone.",
-    kind: "color" as const,
-    color: BRICK,
-  },
-];
-
-const specs = [
-  { label: "Shell", value: "12oz cotton twill" },
-  { label: "Crown", value: "Structured, mid-profile" },
-  { label: "Closure", value: "Brass adjustable strap" },
-  { label: "Brim", value: "Pre-curved, stitched edge" },
-  { label: "Wash", value: "Cold water, hang dry" },
-  { label: "Made in", value: "Cut and sewn to order" },
-];
-
-const tickets = [
-  {
-    quote: "Wore it every day for a year before the strap even loosened.",
-    name: "Alex M.",
-  },
-  {
-    quote: "Fits right out of the box. No breaking-in period needed.",
-    name: "Jordan R.",
-  },
-  {
-    quote: "The one I reach for when I don't want to think about it.",
-    name: "Sam K.",
-  },
-];
-
-const community = [
-  "https://images.unsplash.com/photo-1521369909029-2afed882baee?q=80&w=800&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?q=80&w=800&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1575428652377-a2d80e2277fc?q=80&w=800&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1534215754734-18e55d13e346?q=80&w=800&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=800&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1556306535-0f09a537f0a3?q=80&w=800&auto=format&fit=crop",
-];
-
-const tilts = [-3, 2, -2, 3, -1, 2];
-
-const navLinks = [
-  { label: "Catalog", href: "#catalog" },
-  { label: "Collections", href: "#collections" },
-  { label: "Spec sheet", href: "#details" },
-  { label: "About", href: "#about" },
-];
 
 export default function Home() {
   const [mobileMenu, setMobileMenu] = useState(false);
@@ -167,7 +33,7 @@ export default function Home() {
       <BrandStatement />
       <Collections />
       <Details selected={selected} setSelected={setSelected} />
-      <Lifestyle />
+      {/* <Lifestyle /> */}
       <Tickets />
       <Community />
       <Newsletter
@@ -556,7 +422,7 @@ function Details({
             />
           </div>
 
-          <div className="mt-6 flex gap-3">
+          {/* <div className="mt-6 flex gap-3">
             {products.map((product) => (
               <button
                 key={product.id}
@@ -575,7 +441,7 @@ function Details({
                 </span>
               </button>
             ))}
-          </div>
+          </div> */}
         </div>
 
         <div>
@@ -596,13 +462,6 @@ function Details({
               </div>
             ))}
           </dl>
-
-          <button
-            className="mt-9 w-full px-6 py-4 text-sm font-medium md:max-w-sm"
-            style={{ background: INK, color: CREAM }}
-          >
-            Add to bag
-          </button>
         </div>
       </div>
     </section>
@@ -617,7 +476,7 @@ function Lifestyle() {
   return (
     <section className="relative h-[70vh] min-h-[520px] overflow-hidden" style={{ background: INK }}>
       <Image
-        src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=2400&auto=format&fit=crop"
+        src="/images/img1.jpeg"
         alt="Person wearing a TRSHPNDA cap outdoors"
         fill
         sizes="100vw"
