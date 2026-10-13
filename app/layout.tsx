@@ -1,12 +1,16 @@
+
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { ReactLenis } from "lenis/react";
+
 import {
   OrganizationSchema,
   WebsiteSchema,
 } from "./components/seo/StrucrutedData";
+
 import "./globals.css";
+import { openGraphImageUrl, siteUrl } from "./data";
 
 const geist = Geist({
   subsets: ["latin"],
@@ -14,7 +18,11 @@ const geist = Geist({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://trshpnda.ca"),
+  metadataBase: new URL(siteUrl),
+
+  icons: {
+    icon: "/trshpnda_favicon.ico",
+  },
 
   title: {
     default: "TRSHPNDA — Premium Everyday Headwear",
@@ -22,50 +30,38 @@ export const metadata: Metadata = {
   },
 
   description:
-    "Shop premium caps designed for everyday wear. Discover structured, washed, and minimalist headwear made with quality materials and designed for modern style.",
+    "Shop premium caps designed for everyday wear. Discover structured, washed, and minimalist headwear made with quality materials and modern style.",
 
   keywords: [
-    "caps",
-    "caps online",
-    "buy caps online",
     "premium caps",
-    "premium headwear",
-    "everyday caps",
-    "fashion caps",
     "streetwear caps",
-    "men's caps",
-    "women's caps",
     "baseball caps",
+    "everyday headwear",
     "cotton caps",
+    "washed caps",
   ],
 
-  authors: [
-    {
-      name: "TRSHPNDA",
-    },
-  ],
-
+  authors: [{ name: "TRSHPNDA" }],
   creator: "TRSHPNDA",
   publisher: "TRSHPNDA",
 
-  alternates: {
-    canonical: "/",
-  },
+  // Set canonical URLs at the individual page level.
+  // Do not set "/" globally for every route.
 
   openGraph: {
     type: "website",
     locale: "en_CA",
-    url: "/",
+    url: siteUrl,
     siteName: "TRSHPNDA",
     title: "TRSHPNDA — Premium Everyday Headwear",
     description:
-      "Premium caps designed for everyday wear. Discover modern headwear built around quality, comfort, and effortless style.",
+      "Discover premium caps designed for everyday wear. Explore the TRSHPNDA collection.",
     images: [
       {
-        url: "/trshpndajpeg.jpeg",
+        url: openGraphImageUrl,
         width: 1200,
         height: 630,
-        alt: "TRSHPNDA premium headwear",
+        alt: "TRSHPNDA premium streetwear caps",
       },
     ],
   },
@@ -74,8 +70,8 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "TRSHPNDA — Premium Everyday Headwear",
     description:
-      "Premium caps designed for everyday wear.",
-    images: ["/trshpndajpeg.jpeg"],
+      "Discover premium caps designed for everyday wear.",
+    images: [openGraphImageUrl],
   },
 
   robots: {
@@ -103,9 +99,14 @@ export default function RootLayout({
       <body className={`${geist.variable} antialiased`}>
         <OrganizationSchema />
         <WebsiteSchema />
-        <ReactLenis root options={{ lerp: 0.1, duration: 1.2 }}>
+
+        <ReactLenis
+          root
+          options={{ lerp: 0.1, duration: 1.2 }}
+        >
           {children}
         </ReactLenis>
+
         <Analytics />
       </body>
     </html>

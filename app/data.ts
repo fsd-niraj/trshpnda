@@ -1,3 +1,6 @@
+export const siteUrl = 'https://trshpnda.ca';
+export const openGraphImageUrl = '/open-image.png';
+
 export type Product = {
   id: string;
   sku: string;
@@ -122,8 +125,13 @@ export const community = [
 export const tilts = [-3, 2, -2, 3, -1, 2];
 
 export const navLinks = [
-  { label: 'Catalog', href: '#catalog' },
-  { label: 'Collections', href: '#collections' },
-  { label: 'Spec sheet', href: '#details' },
+  { label: 'Collection', href: '/products' },
   { label: 'About', href: '#about' },
+];
+
+export const footerLinks = [
+  { label: 'Shipping', href: '/shipping' },
+  { label: 'Returns', href: '/returns' },
+  { label: 'FAQs', href: '/faqs' },
+  { label: 'Size Guide', href: '/size-guide' },
 ];

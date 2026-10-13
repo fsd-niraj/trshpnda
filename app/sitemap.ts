@@ -1,11 +1,10 @@
 import type { MetadataRoute } from 'next';
+import { siteUrl } from './data';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://trshpnda.ca';
-
   return [
     {
-      url: baseUrl,
+      url: siteUrl,
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 1,

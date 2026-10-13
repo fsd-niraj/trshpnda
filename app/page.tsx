@@ -3,9 +3,10 @@
 import Image from "next/image";
 import { Anton } from "next/font/google";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Search, ShoppingBag, Scissors, Tag } from "lucide-react";
-import { useState, type SubmitEvent } from "react";
-import { collections, community, INK, navLinks, PAPER, Product, products, specs, tickets, tilts, CREAM, GOLD } from "./data";
+import { Menu, X, Tag } from "lucide-react";
+import { useState } from "react";
+import { community, INK, navLinks, PAPER, Product, products, tickets, tilts, CREAM, GOLD, footerLinks } from "./data";
+import Link from "next/link";
 
 const anton = Anton({
   subsets: ["latin"],
@@ -17,9 +18,6 @@ const DISPLAY = "font-[family-name:var(--font-anton)]";
 
 export default function Home() {
   const [mobileMenu, setMobileMenu] = useState(false);
-  const [selected, setSelected] = useState(products[0]);
-  const [email, setEmail] = useState("");
-  const [subscribed, setSubscribed] = useState(false);
 
   return (
     <main
@@ -28,20 +26,10 @@ export default function Home() {
     >
       <Navbar mobileMenu={mobileMenu} setMobileMenu={setMobileMenu} />
       <Hero />
-      <Ticker />
       <Catalog />
       <BrandStatement />
-      <Collections />
-      <Details selected={selected} setSelected={setSelected} />
-      {/* <Lifestyle /> */}
       <Tickets />
       <Community />
-      <Newsletter
-        email={email}
-        setEmail={setEmail}
-        subscribed={subscribed}
-        setSubscribed={setSubscribed}
-      />
       <FinalCTA />
       <Footer />
     </main>
@@ -80,22 +68,6 @@ function Navbar({
               {link.label}
             </a>
           ))}
-        </div>
-
-        <div className="hidden items-center gap-5 md:flex">
-          <button aria-label="Search" className="opacity-70 transition-opacity hover:opacity-100">
-            <Search size={18} strokeWidth={1.7} />
-          </button>
-          <button aria-label="Bag" className="opacity-70 transition-opacity hover:opacity-100">
-            <ShoppingBag size={18} strokeWidth={1.7} />
-          </button>
-          <a
-            href="#catalog"
-            className="px-5 py-2.5 text-sm font-medium [clip-path:polygon(0_0,100%_0,100%_70%,94%_100%,0_100%)]"
-            style={{ background: INK, color: CREAM }}
-          >
-            Shop the drop
-          </a>
         </div>
 
         <button
@@ -177,9 +149,6 @@ function Hero() {
             >
               Shop the catalog
             </motion.a>
-            <a href="#details" className="border-b pb-0.5 text-sm font-medium" style={{ borderColor: INK }}>
-              See the spec sheet
-            </a>
           </div>
         </div>
 
@@ -214,50 +183,6 @@ function Hero() {
 }
 
 /* -------------------------------------------------------------------------- */
-/* TICKER                                                                     */
-/* -------------------------------------------------------------------------- */
-
-function Ticker() {
-  const phrases = [
-    "Heavyweight cotton",
-    "Small batch drops",
-    "Made to be worn in",
-    "Free exchanges",
-  ];
-
-  return (
-    <div className="overflow-hidden py-4" style={{ background: INK }}>
-      <style>{`
-        @keyframes caps-marquee {
-          from { transform: translateX(0); }
-          to { transform: translateX(-50%); }
-        }
-        .caps-marquee-track {
-          animation: caps-marquee 26s linear infinite;
-        }
-        @media (prefers-reduced-motion: reduce) {
-          .caps-marquee-track { animation: none; }
-        }
-      `}</style>
-      <div className="flex w-max caps-marquee-track">
-        {[0, 1].map((rep) => (
-          <div key={rep} className="flex items-center gap-10 pr-10">
-            {phrases.map((phrase) => (
-              <span key={phrase} className="flex items-center gap-10 whitespace-nowrap text-sm" style={{ color: CREAM }}>
-                {phrase}
-                <span className={`${DISPLAY} text-base`} style={{ color: GOLD }}>
-                  TRSHPNDA
-                </span>
-              </span>
-            ))}
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-/* -------------------------------------------------------------------------- */
 /* CATALOG                                                                    */
 /* -------------------------------------------------------------------------- */
 
@@ -267,10 +192,9 @@ function Catalog() {
       <div className="mx-auto max-w-[1500px]">
         <div className="mb-12 flex flex-col justify-between gap-4 md:flex-row md:items-end">
           <h2 className={`${DISPLAY} text-4xl md:text-6xl`}>New in the shop</h2>
-          {/* TODO: placeholder href, point at the full catalog/shop page */}
-          <a href="#" className="text-sm font-medium underline">
+          {/* <a href="#" className="text-sm font-medium underline">
             View full catalog
-          </a>
+          </a> */}
         </div>
 
         <div className="grid grid-cols-2 gap-x-4 gap-y-12 md:grid-cols-4 md:gap-x-5">
@@ -349,154 +273,6 @@ function BrandStatement() {
 }
 
 /* -------------------------------------------------------------------------- */
-/* COLLECTIONS                                                                */
-/* -------------------------------------------------------------------------- */
-
-function Collections() {
-  return (
-    <section id="collections" className="px-5 py-24 md:px-8 md:py-32">
-      <div className="mx-auto max-w-[1500px]">
-        <h2 className={`${DISPLAY} mb-12 text-4xl md:text-6xl`}>Find your fit</h2>
-
-        <div className="grid gap-4 md:grid-cols-2">
-          {collections.map((c) => (
-            <a
-              key={c.title}
-              href="#catalog"
-              className="group relative flex min-h-[320px] flex-col justify-end overflow-hidden p-7"
-              style={{ background: c.kind === "color" ? c.color : "#111" }}
-            >
-              {c.kind === "photo" && (
-                <>
-                  <Image
-                    src={c.image}
-                    alt={`TRSHPNDA ${c.title} collection`}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover opacity-80 transition-opacity duration-300 group-hover:opacity-95"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-                </>
-              )}
-
-              <div className="relative" style={{ color: c.kind === "color" ? INK : CREAM }}>
-                <h3 className={`${DISPLAY} text-3xl`}>{c.title}</h3>
-                <p
-                  className="mt-2 max-w-xs text-sm"
-                  style={{ color: c.kind === "color" ? "rgba(21,20,15,0.75)" : "rgba(245,241,230,0.75)" }}
-                >
-                  {c.description}
-                </p>
-              </div>
-            </a>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* -------------------------------------------------------------------------- */
-/* DETAILS + SWATCHES                                                         */
-/* -------------------------------------------------------------------------- */
-
-function Details({
-  selected,
-  setSelected,
-}: {
-  selected: Product;
-  setSelected: (p: Product) => void;
-}) {
-  return (
-    <section id="details" className="px-5 py-24 md:px-8 md:py-32" style={{ background: "#E3DDCC" }}>
-      <div className="mx-auto grid max-w-[1500px] gap-12 md:grid-cols-2 md:items-start">
-        <div>
-          <div className="relative aspect-square overflow-hidden" style={{ background: "#d5d1c9" }}>
-            <Image
-              key={selected.id}
-              src={selected.image}
-              alt={`TRSHPNDA ${selected.name} cap`}
-              fill
-              sizes="50vw"
-              className="object-cover"
-            />
-          </div>
-
-          {/* <div className="mt-6 flex gap-3">
-            {products.map((product) => (
-              <button
-                key={product.id}
-                onClick={() => setSelected(product)}
-                className="flex flex-col items-center gap-1.5"
-              >
-                <span
-                  className="h-9 w-9 border-2"
-                  style={{
-                    background: product.swatchHex,
-                    borderColor: selected.id === product.id ? INK : "transparent",
-                  }}
-                />
-                <span className="text-[10px]" style={{ color: "rgba(21,20,15,0.6)" }}>
-                  {product.swatchName}
-                </span>
-              </button>
-            ))}
-          </div> */}
-        </div>
-
-        <div>
-          <h2 className={`${DISPLAY} text-4xl md:text-5xl`}>{selected.name}</h2>
-          <p className="mt-3 text-sm" style={{ color: "rgba(21,20,15,0.6)" }}>
-            {selected.description} · ${selected.price} CAD
-          </p>
-
-          <dl className="mt-8 divide-y" style={{ borderColor: "rgba(21,20,15,0.15)" }}>
-            {specs.map((spec) => (
-              <div
-                key={spec.label}
-                className="flex justify-between gap-6 border-t py-3 text-sm"
-                style={{ borderColor: "rgba(21,20,15,0.15)" }}
-              >
-                <dt style={{ color: "rgba(21,20,15,0.55)" }}>{spec.label}</dt>
-                <dd className="text-right font-medium">{spec.value}</dd>
-              </div>
-            ))}
-          </dl>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* -------------------------------------------------------------------------- */
-/* LIFESTYLE                                                                  */
-/* -------------------------------------------------------------------------- */
-
-function Lifestyle() {
-  return (
-    <section className="relative h-[70vh] min-h-[520px] overflow-hidden" style={{ background: INK }}>
-      <Image
-        src="/images/img1.jpeg"
-        alt="Person wearing a TRSHPNDA cap outdoors"
-        fill
-        sizes="100vw"
-        className="object-cover opacity-70"
-      />
-      <div className="absolute inset-0 bg-black/25" />
-
-      <div className="absolute bottom-8 left-5 right-5 md:bottom-12 md:left-8 md:right-8">
-        <div
-          className="mx-auto max-w-[1500px] px-6 py-4 text-sm md:max-w-xs"
-          style={{ background: CREAM, color: INK }}
-        >
-          Same cap, every day, every weather.
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* -------------------------------------------------------------------------- */
 /* TICKETS (TESTIMONIALS)                                                     */
 /* -------------------------------------------------------------------------- */
 
@@ -565,72 +341,6 @@ function Community() {
 }
 
 /* -------------------------------------------------------------------------- */
-/* NEWSLETTER                                                                 */
-/* -------------------------------------------------------------------------- */
-
-function Newsletter({
-  email,
-  setEmail,
-  subscribed,
-  setSubscribed,
-}: {
-  email: string;
-  setEmail: (v: string) => void;
-  subscribed: boolean;
-  setSubscribed: (v: boolean) => void;
-}) {
-  function handleSubmit(e: SubmitEvent) {
-    e.preventDefault();
-    if (!email.trim()) return;
-    setSubscribed(true);
-  }
-
-  return (
-    <section className="px-5 py-24 md:px-8 md:py-32">
-      <div
-        className="mx-auto max-w-xl border-2 border-dashed p-8 md:p-10"
-        style={{ borderColor: "rgba(21,20,15,0.35)" }}
-      >
-        <div className="mb-5 flex items-center gap-2 text-xs" style={{ color: "rgba(21,20,15,0.55)" }}>
-          <Scissors size={14} />
-          Cut along this line, or just fill it in
-        </div>
-
-        <h2 className={`${DISPLAY} text-3xl md:text-4xl`}>Get first access to restocks</h2>
-        <p className="mt-3 text-sm" style={{ color: "rgba(21,20,15,0.6)" }}>
-          No spam, just a heads-up before small-batch runs sell out.
-        </p>
-
-        {subscribed ? (
-          <div className="mt-8 px-6 py-4 text-center text-sm" style={{ background: INK, color: CREAM }}>
-            You&apos;re on the list.
-          </div>
-        ) : (
-          <form onSubmit={handleSubmit} className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Email address"
-              required
-              className="min-w-0 flex-1 border px-5 py-3.5 text-sm outline-none"
-              style={{ borderColor: "rgba(21,20,15,0.3)", background: "transparent" }}
-            />
-            <button
-              type="submit"
-              className="px-6 py-3.5 text-sm font-medium"
-              style={{ background: GOLD, color: INK }}
-            >
-              Notify me
-            </button>
-          </form>
-        )}
-      </div>
-    </section>
-  );
-}
-
-/* -------------------------------------------------------------------------- */
 /* FINAL CTA                                                                  */
 /* -------------------------------------------------------------------------- */
 
@@ -673,9 +383,7 @@ function Footer() {
           <div>
             <p className="mb-4 text-sm font-medium">Shop</p>
             <div className="flex flex-col gap-2.5 text-sm" style={{ color: "rgba(245,241,230,0.65)" }}>
-              <a href="#catalog" className="hover:text-white">Catalog</a>
-              <a href="#collections" className="hover:text-white">Collections</a>
-              <a href="#details" className="hover:text-white">Spec sheet</a>
+              <Link href="/products" className="hover:text-white">Collections</Link>
             </div>
           </div>
 
@@ -683,10 +391,9 @@ function Footer() {
             <p className="mb-4 text-sm font-medium">Support</p>
             {/* TODO: placeholder hrefs, point each at its real support page */}
             <div className="flex flex-col gap-2.5 text-sm" style={{ color: "rgba(245,241,230,0.65)" }}>
-              <a href="#" className="hover:text-white">Shipping</a>
-              <a href="#" className="hover:text-white">Returns</a>
-              <a href="#" className="hover:text-white">FAQ</a>
-              <a href="#" className="hover:text-white">Size guide</a>
+              {footerLinks.map((l, i) =>
+                <a href={l.href} className="hover:text-white" key={i}>{l.label}</a>
+              )}
             </div>
           </div>
         </div>
@@ -698,9 +405,7 @@ function Footer() {
           <p>© {new Date().getFullYear()} TRSHPNDA. All rights reserved.</p>
           {/* TODO: placeholder hrefs, point each at its real legal/social destination */}
           <div className="flex gap-5">
-            <a href="#" className="hover:text-white">Privacy</a>
-            <a href="#" className="hover:text-white">Terms</a>
-            <a href="#" className="hover:text-white">Instagram</a>
+            <a href="https://www.instagram.com/trshpnda.streetwear" target="_blank" className="hover:text-white">Instagram</a>
           </div>
         </div>
       </div>
