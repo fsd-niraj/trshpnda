@@ -18,49 +18,6 @@ export const GOLD = '#F2B134';
 export const BRICK = '#B3492F';
 export const CREAM = '#F5F1E6';
 
-export const products: Product[] = [
-  {
-    id: 'classic-black',
-    sku: 'TRP-014',
-    name: 'Classic Light Blue',
-    swatchName: 'Jet',
-    swatchHex: '#17140F',
-    description: 'Snapback',
-    price: 45,
-    image: '/images/img2.jpeg',
-  },
-  {
-    id: 'washed-stone',
-    sku: 'TRP-021',
-    name: 'Only Pans Black Purple',
-    swatchName: 'Stone',
-    swatchHex: '#A49B8C',
-    description: 'Snapback',
-    price: 48,
-    image: '/images/img5.jpeg',
-  },
-  {
-    id: 'forest',
-    sku: 'TRP-032',
-    name: 'Integrity Black Orange',
-    swatchName: 'Pine',
-    swatchHex: '#344438',
-    description: 'Trucker',
-    price: 45,
-    image: '/images/img3.jpeg',
-  },
-  {
-    id: 'off-white',
-    sku: 'TRP-045',
-    name: 'Only Pans Black Purple',
-    swatchName: 'Bone',
-    swatchHex: '#E7E2D8',
-    description: 'Trucker',
-    price: 45,
-    image: '/images/img4.jpeg',
-  },
-];
-
 export const collections = [
   {
     title: 'Everyday',

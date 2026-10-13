@@ -5,8 +5,9 @@ import { Anton } from "next/font/google";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Tag } from "lucide-react";
 import { useState } from "react";
-import { community, INK, navLinks, PAPER, Product, products, tickets, tilts, CREAM, GOLD, footerLinks } from "./data";
+import { community, INK, navLinks, PAPER, tickets, tilts, CREAM, GOLD, footerLinks } from "./data";
 import Link from "next/link";
+import { ProductDesign, products } from "./lib/products";
 
 const anton = Anton({
   subsets: ["latin"],
@@ -155,7 +156,7 @@ function Hero() {
         <div className="relative mx-auto w-full max-w-sm">
           <div className="relative aspect-square overflow-hidden" style={{ background: "#dedbd3" }}>
             <Image
-              src={products[0].image}
+              src={products[0].variants[0].image}
               alt={`TRSHPNDA ${products[0].name} cap`}
               fill
               sizes="(max-width: 768px) 100vw, 420px"
@@ -169,12 +170,12 @@ function Hero() {
             style={{ background: INK, color: CREAM }}
           >
             <p className="flex items-center gap-1.5 text-[11px] tracking-tight" style={{ color: GOLD }}>
-              <Tag size={12} /> Style {products[0].sku}
+              <Tag size={12} /> Style {products[0].variants[0].sku}
             </p>
             <p className="mt-2 leading-relaxed" style={{ color: "rgba(245,241,230,0.85)" }}>
               {products[0].name} · 12oz cotton twill · Adjustable strap
             </p>
-            <p className="mt-2 text-sm">${products[0].price} CAD</p>
+            <p className="mt-2 text-sm">${products[0].variants[0].price} CAD</p>
           </div>
         </div>
       </motion.div>
@@ -207,7 +208,7 @@ function Catalog() {
   );
 }
 
-function ProductTicket({ product }: { product: Product }) {
+function ProductTicket({ product }: { product: ProductDesign }) {
   const [hover, setHover] = useState(false);
 
   return (
@@ -217,7 +218,7 @@ function ProductTicket({ product }: { product: Product }) {
     >
       <div className="relative aspect-[4/5] overflow-hidden" style={{ background: "#e9e6df" }}>
         <Image
-          src={product.image}
+          src={product.variants[0].image}
           alt={`TRSHPNDA ${product.name} cap`}
           fill
           sizes="(max-width: 768px) 50vw, 25vw"
@@ -230,7 +231,7 @@ function ProductTicket({ product }: { product: Product }) {
         style={{ background: hover ? GOLD : INK, color: hover ? INK : CREAM, width: "fit-content" }}
       >
         <Tag size={11} />
-        {product.sku}
+        {product.variants[0].sku}
       </div>
 
       <div className="mt-2 flex justify-between gap-3 border-t border-dashed pt-2" style={{ borderColor: "rgba(21,20,15,0.25)" }}>
@@ -240,7 +241,7 @@ function ProductTicket({ product }: { product: Product }) {
             {product.description}
           </p>
         </div>
-        <p className="whitespace-nowrap text-sm">${product.price} CAD</p>
+        <p className="whitespace-nowrap text-sm">${product.variants[0].price} CAD</p>
       </div>
     </article>
   );
