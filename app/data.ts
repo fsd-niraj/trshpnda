@@ -71,12 +71,12 @@ export const tickets = [
 ];
 
 export const community = [
-  '/images/img1.jpeg',
-  '/images/img6.jpeg',
-  '/images/img5.jpeg',
-  '/images/img2.jpeg',
-  '/images/img4.jpeg',
-  '/images/img3.jpeg',
+  '/products/img1.jpeg',
+  '/products/img6.jpeg',
+  '/products/img5.jpeg',
+  '/products/img2.jpeg',
+  '/products/img4.jpeg',
+  '/products/img3.jpeg',
 ];
 
 export const tilts = [-3, 2, -2, 3, -1, 2];
