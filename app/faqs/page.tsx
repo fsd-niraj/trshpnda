@@ -1,11 +1,10 @@
-
 import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "FAQs | TRSHPNDA",
+  title: "FAQs",
   description:
-    "Find answers about TRSHPNDA orders, products, shipping, sizing, and returns.",
+    "Answers about TRSHPNDA orders, products, shipping, sizing, and returns.",
 };
 
 const faqs = [
@@ -14,15 +13,15 @@ const faqs = [
     questions: [
       {
         q: "How do I place an order?",
-        a: "Choose your preferred cap, select any available options, and add it to your bag. Follow the checkout steps to complete your purchase.",
+        a: "Choose your preferred cap, select any available options, and follow the checkout steps to complete your purchase.",
       },
       {
         q: "Can I change or cancel my order?",
-        a: "Contact us as soon as possible. We'll do our best to help, but changes and cancellations cannot be guaranteed once an order enters processing or ships.",
+        a: "Contact us as soon as possible. We’ll do our best to help, but changes and cancellations cannot be guaranteed once an order enters processing or ships.",
       },
       {
         q: "How do I know my order went through?",
-        a: "You'll receive an order confirmation email after completing your purchase. If it doesn't arrive, check your spam folder before contacting us.",
+        a: "You’ll receive an order confirmation email after completing your purchase. If it doesn’t arrive, check your spam folder before contacting us.",
       },
     ],
   },
@@ -52,7 +51,7 @@ const faqs = [
       },
       {
         q: "Will I receive tracking information?",
-        a: "When tracking is available, you'll receive a link in your shipping confirmation email. Updates may take some time to appear.",
+        a: "When tracking is available, you’ll receive a link in your shipping confirmation email. Updates may take some time to appear.",
       },
       {
         q: "Do you ship internationally?",
@@ -73,7 +72,7 @@ const faqs = [
       },
       {
         q: "What if my order arrives damaged or incorrect?",
-        a: "Contact our support team with your order number and photos of the issue so we can review it and help with the next steps.",
+        a: "Contact our support team with your order number and photos of the issue so we can review it and help with next steps.",
       },
     ],
   },
@@ -81,123 +80,105 @@ const faqs = [
 
 export default function FAQsPage() {
   return (
-    <main className="min-h-screen bg-[#EDE8DC] text-[#15140F]">
-      <section className="border-b border-[#15140F]/15 px-6 py-16 sm:px-10 sm:py-24">
-        <div className="mx-auto max-w-6xl">
+    <main className="mx-auto min-h-screen w-full max-w-[1600px] bg-paper px-4 sm:px-6 lg:px-16">
+      <header className="border-b border-line py-10 sm:py-24">
+        <div className="mx-auto w-full max-w-7xl">
           <Link
+            className="text-[10px] font-bold uppercase tracking-[.16em]"
             href="/"
-            className="text-xs font-bold uppercase tracking-[0.2em] opacity-60 hover:opacity-100"
           >
-            TRSHPNDA / Support
+            TRSHPNDA / Support ↗
           </Link>
-
-          <p className="mt-12 text-xs font-bold uppercase tracking-[0.25em] text-[#B3492F]">
-            Need to know
+          <p className="mt-10 text-[10px] font-bold uppercase tracking-[.16em] text-[#9a3d75]">
+            Good to know
           </p>
-
-          <h1 className="mt-4 max-w-4xl text-5xl font-black uppercase leading-[0.95] tracking-tight sm:text-7xl">
-            Frequently
-            <br />
-            Asked Questions.
+          <h1 className="mt-5 font-display text-6xl leading-none tracking-[-.07em] sm:text-8xl">
+            Questions? <em>Sorted.</em>
           </h1>
-
-          <p className="mt-6 max-w-xl text-base leading-7 opacity-75 sm:text-lg">
-            Straight answers. Everything you need to know about your
-            TRSHPNDA order, fit, and delivery.
+          <p className="mt-6 max-w-xl text-sm leading-7 text-muted sm:text-base">
+            Straight answers. Everything you need to know about your TRSHPNDA
+            order, fit, and delivery.
           </p>
         </div>
-      </section>
-
-      <section className="px-6 py-12 sm:px-10 sm:py-16">
-        <div className="mx-auto max-w-6xl">
-          <div className="grid gap-12 md:grid-cols-[220px_1fr] md:gap-20">
-            <aside className="h-fit md:sticky md:top-8">
-              <p className="text-xs font-bold uppercase tracking-[0.2em]">
-                Browse topics
+      </header>
+      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 py-10 sm:py-16 lg:grid-cols-[190px_minmax(0,760px)] lg:gap-24">
+        <aside className="self-start lg:sticky lg:top-6">
+          <p className="text-[10px] font-bold uppercase tracking-[.16em]">
+            Browse topics
+          </p>
+          <nav className="mt-5 flex flex-wrap gap-2 lg:flex-col lg:gap-4">
+            {faqs.map((group, index) => (
+              <a
+                className="rounded-full bg-surface px-3 py-2 text-xs text-muted hover:text-ink lg:bg-transparent lg:px-0"
+                key={group.category}
+                href={`#faq-${index}`}
+              >
+                {group.category}
+              </a>
+            ))}
+          </nav>
+        </aside>
+        <div>
+          {faqs.map((group, index) => (
+            <section
+              key={group.category}
+              id={`faq-${index}`}
+              className="scroll-mt-6 border-t border-line py-7"
+            >
+              <p className="text-[10px] font-bold uppercase tracking-[.16em] text-[#9a3d75]">
+                0{index + 1} / Support
               </p>
-
-              <nav className="mt-5 flex flex-wrap gap-4 md:flex-col">
-                {faqs.map((group, index) => (
-                  <a
-                    key={group.category}
-                    href={`#faq-${index}`}
-                    className="text-sm opacity-65 transition-opacity hover:opacity-100"
+              <h2 className="mt-3 font-display text-3xl tracking-[-.05em] sm:text-4xl">
+                {group.category}
+              </h2>
+              <div className="mt-5">
+                {group.questions.map((item) => (
+                  <details
+                    key={item.q}
+                    className="group border-t border-line py-5"
                   >
-                    {group.category}
-                  </a>
+                    <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-[13px] font-semibold">
+                      <span>{item.q}</span>
+                      <span className="text-xl font-normal transition group-open:rotate-45">
+                        +
+                      </span>
+                    </summary>
+                    <p className="mr-7 mt-4 text-xs leading-7 text-muted">
+                      {item.a}
+                    </p>
+                  </details>
                 ))}
-              </nav>
-            </aside>
-
-            <div className="max-w-3xl">
-              {faqs.map((group, index) => (
-                <section
-                  key={group.category}
-                  id={`faq-${index}`}
-                  className="scroll-mt-8 border-t border-[#15140F]/20 py-8 sm:py-10"
-                >
-                  <p className="text-xs font-bold tracking-widest text-[#B3492F]">
-                    0{index + 1}
-                  </p>
-
-                  <h2 className="mt-3 text-2xl font-black uppercase tracking-tight">
-                    {group.category}
-                  </h2>
-
-                  <div className="mt-5">
-                    {group.questions.map((item) => (
-                      <details
-                        key={item.q}
-                        className="group border-t border-[#15140F]/15 py-5"
-                      >
-                        <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-sm font-bold sm:text-base">
-                          <span>{item.q}</span>
-                          <span className="text-xl font-normal transition-transform group-open:rotate-45">
-                            +
-                          </span>
-                        </summary>
-
-                        <p className="mt-4 max-w-2xl pr-6 text-sm leading-7 opacity-75">
-                          {item.a}
-                        </p>
-                      </details>
-                    ))}
-                  </div>
-                </section>
-              ))}
-
-              <div className="border-t border-[#15140F]/20 py-8">
-                <h2 className="text-xl font-black uppercase">
-                  Still have questions?
-                </h2>
-                <p className="mt-3 text-sm leading-7 opacity-75">
-                  Reach out to our team for help with your order or product.
-                </p>
-                <Link
-                  href="/shipping"
-                  className="mt-5 inline-flex bg-[#15140F] px-6 py-3 text-xs font-bold uppercase tracking-[0.15em] text-[#EDE8DC] transition-colors hover:bg-[#B3492F]"
-                >
-                  Shipping information
-                </Link>
               </div>
-            </div>
-          </div>
+            </section>
+          ))}
+          <section className="mt-4 rounded-2xl bg-brand-pink p-7 sm:rounded-[20px]">
+            <h2 className="font-display text-3xl tracking-[-.05em]">
+              Still wondering?
+            </h2>
+            <p className="my-3 text-xs leading-6">
+              Find more details about delivery, returns, and getting the right
+              fit.
+            </p>
+            <Link
+              className="inline-flex items-center gap-5 rounded-full bg-ink px-5 py-3 text-[10px] font-bold uppercase text-surface transition hover:bg-brand-green hover:text-ink"
+              href="/shipping"
+            >
+              Shipping information ↗
+            </Link>
+          </section>
         </div>
-      </section>
-
-      <footer className="border-t border-[#15140F]/15 px-6 py-8 sm:px-10">
-        <div className="mx-auto flex max-w-6xl flex-col justify-between gap-4 sm:flex-row sm:items-center">
-          <Link
-            href="/"
-            className="text-sm font-black uppercase tracking-[0.2em]"
-          >
-            TRSHPNDA
-          </Link>
-          <div className="flex flex-wrap gap-5 text-xs opacity-70">
-            <Link href="/shipping">Shipping</Link>
-            <Link href="/returns">Returns</Link>
-            <Link href="/size-guide">Size Guide</Link>
-          </div>
+      </div>
+      <footer className="flex flex-col items-start justify-between gap-3 border-t border-line py-6 sm:flex-row sm:items-center">
+        <Link className="text-[13px] font-bold tracking-[-.06em]" href="/">
+          TRSHPNDA®
+        </Link>
+        <p className="text-[10px] text-muted">
+          Headwear for your own frequency.
+        </p>
+        <div className="flex flex-wrap gap-4 text-[10px] font-semibold">
+          <Link href="/shipping">Shipping</Link>
+          <Link href="/returns">Returns</Link>
+          <Link href="/size-guide">Size guide</Link>
         </div>
       </footer>
     </main>

@@ -1,9 +1,8 @@
-
 import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Size Guide | TRSHPNDA",
+  title: "Size Guide",
   description:
     "Learn how to measure your head and find the right fit for TRSHPNDA headwear.",
 };
@@ -14,7 +13,6 @@ const sizes = [
   { cm: "60–62 cm", inches: "23.6–24.4 in", fit: "Larger fit" },
   { cm: "63–65 cm", inches: "24.8–25.6 in", fit: "Extra-large reference" },
 ];
-
 const steps = [
   "Use a flexible measuring tape.",
   "Wrap it around your head, just above your eyebrows and ears.",
@@ -25,173 +23,171 @@ const steps = [
 
 export default function SizeGuidePage() {
   return (
-    <main className="min-h-screen bg-[#EDE8DC] text-[#15140F]">
-      <section className="border-b border-[#15140F]/15 px-6 py-16 sm:px-10 sm:py-24">
-        <div className="mx-auto max-w-6xl">
+    <main className="mx-auto min-h-screen w-full max-w-[1600px] bg-paper px-4 sm:px-6 lg:px-16">
+      <header className="border-b border-line py-10 sm:py-20">
+        <div className="mx-auto max-w-7xl">
           <Link
+            className="text-[10px] font-bold uppercase tracking-[.16em]"
             href="/"
-            className="text-xs font-bold uppercase tracking-[0.2em] opacity-60 hover:opacity-100"
           >
-            TRSHPNDA / Support
+            TRSHPNDA / Support ↗
           </Link>
-
-          <p className="mt-12 text-xs font-bold uppercase tracking-[0.25em] text-[#B3492F]">
+          <p className="mt-10 text-[10px] font-bold uppercase tracking-[.16em] text-[#9a3d75]">
             Find your fit
           </p>
-
-          <h1 className="mt-4 max-w-4xl text-5xl font-black uppercase leading-[0.95] tracking-tight sm:text-7xl">
-            The right
+          <h1 className="mt-4 font-display text-5xl leading-[.98] tracking-[-.07em] sm:text-8xl">
+            The right fit
             <br />
-            fit changes everything.
+            changes everything.
           </h1>
-
-          <p className="mt-6 max-w-xl text-base leading-7 opacity-75 sm:text-lg">
-            A good cap should feel natural from the first wear. Here’s
-            how to measure your head and choose a comfortable fit.
+          <p className="mt-6 max-w-xl text-sm leading-7 text-muted sm:text-base">
+            A good cap should feel natural from the first wear. Here’s how to
+            measure your head and choose a comfortable fit.
           </p>
         </div>
-      </section>
-
-      <section className="px-6 py-12 sm:px-10 sm:py-16">
-        <div className="mx-auto grid max-w-6xl gap-12 md:grid-cols-[220px_1fr] md:gap-20">
-          <aside className="h-fit md:sticky md:top-8">
-            <p className="text-xs font-bold uppercase tracking-[0.2em]">
-              On this page
-            </p>
-            <nav className="mt-5 flex flex-wrap gap-4 md:flex-col">
-              <a href="#measure" className="text-sm opacity-65 hover:opacity-100">
-                How to measure
+      </header>
+      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 py-10 sm:py-16 lg:grid-cols-[220px_minmax(0,760px)] lg:gap-24">
+        <aside className="self-start lg:sticky lg:top-6">
+          <p className="text-[10px] font-bold uppercase tracking-[.16em]">
+            On this page
+          </p>
+          <nav className="mt-5 flex flex-wrap gap-2 lg:flex-col lg:gap-4">
+            {[
+              ["measure", "How to measure"],
+              ["reference", "Size reference"],
+              ["construction", "Cap construction"],
+              ["between", "Between sizes"],
+            ].map(([id, label]) => (
+              <a
+                key={id}
+                className="rounded-full bg-surface px-3 py-2 text-xs text-muted hover:text-ink lg:bg-transparent lg:px-0"
+                href={`#${id}`}
+              >
+                {label}
               </a>
-              <a href="#reference" className="text-sm opacity-65 hover:opacity-100">
+            ))}
+          </nav>
+        </aside>
+        <div>
+          <article
+            id="measure"
+            className="scroll-mt-6 border-t border-line py-7"
+          >
+            <div className="grid grid-cols-[36px_1fr] gap-4">
+              <span className="pt-1.5 text-[10px] font-bold tracking-[.12em] text-[#9a3d75]">
+                01
+              </span>
+              <h2 className="text-xl font-semibold sm:text-2xl">
+                How to measure
+              </h2>
+            </div>
+            <ol className="ml-0 mt-4 list-decimal space-y-2 pl-6 text-[13px] leading-7 text-muted sm:ml-[52px]">
+              {steps.map((step) => (
+                <li key={step}>{step}</li>
+              ))}
+            </ol>
+          </article>
+          <article
+            id="reference"
+            className="scroll-mt-6 border-t border-line py-7"
+          >
+            <div className="grid grid-cols-[36px_1fr] gap-4">
+              <span className="pt-1.5 text-[10px] font-bold tracking-[.12em] text-[#9a3d75]">
+                02
+              </span>
+              <h2 className="text-xl font-semibold sm:text-2xl">
                 Size reference
-              </a>
-              <a href="#construction" className="text-sm opacity-65 hover:opacity-100">
-                Cap construction
-              </a>
-              <a href="#between" className="text-sm opacity-65 hover:opacity-100">
-                Between sizes
-              </a>
-            </nav>
-          </aside>
-
-          <div className="max-w-3xl">
-            <article id="measure" className="scroll-mt-8 border-t border-[#15140F]/20 py-8 sm:py-10">
-              <p className="text-xs font-bold tracking-widest text-[#B3492F]">01</p>
-              <h2 className="mt-3 text-2xl font-black uppercase tracking-tight">
-                How to measure
               </h2>
-              <p className="mt-4 text-sm leading-7 opacity-75">
-                Measure around the part of your head where the cap will sit.
-                Keep the tape level and comfortably snug.
+            </div>
+            <div className="ml-0 mt-4 sm:ml-[52px]">
+              <p className="text-[13px] leading-7 text-muted">
+                Use this as a general reference only. Product construction and
+                adjustment range can affect fit; check the specific product
+                description where available.
               </p>
-
-              <ol className="mt-6 space-y-4">
-                {steps.map((step, index) => (
-                  <li key={step} className="flex gap-4 text-sm leading-6">
-                    <span className="font-bold text-[#B3492F]">
-                      0{index + 1}
-                    </span>
-                    <span className="opacity-80">{step}</span>
-                  </li>
-                ))}
-              </ol>
-            </article>
-
-            <article id="reference" className="scroll-mt-8 border-t border-[#15140F]/20 py-8 sm:py-10">
-              <p className="text-xs font-bold tracking-widest text-[#B3492F]">02</p>
-              <h2 className="mt-3 text-2xl font-black uppercase tracking-tight">
-                Head size reference
-              </h2>
-              <p className="mt-4 text-sm leading-7 opacity-75">
-                Use this chart as a general reference, not a guarantee of
-                the fit of an individual cap.
-              </p>
-
-              <div className="mt-6 overflow-x-auto">
-                <table className="w-full min-w-[420px] border-collapse text-left text-sm">
+              <div className="mt-4 overflow-x-auto">
+                <table className="w-full border-collapse text-left text-xs">
                   <thead>
-                    <tr className="border-y border-[#15140F]/20 text-xs uppercase tracking-wider">
-                      <th className="py-4 pr-4">Circumference</th>
-                      <th className="py-4 pr-4">Inches</th>
-                      <th className="py-4">Reference</th>
+                    <tr className="border-y border-line text-[9px] uppercase tracking-[.1em]">
+                      <th className="px-2 py-4">Head circumference</th>
+                      <th className="px-2 py-4">Inches</th>
+                      <th className="px-2 py-4">Reference</th>
                     </tr>
                   </thead>
                   <tbody>
                     {sizes.map((size) => (
-                      <tr key={size.cm} className="border-b border-[#15140F]/15">
-                        <td className="py-4 pr-4 font-bold">{size.cm}</td>
-                        <td className="py-4 pr-4 opacity-75">{size.inches}</td>
-                        <td className="py-4 opacity-75">{size.fit}</td>
+                      <tr key={size.cm} className="border-b border-line">
+                        <td className="px-2 py-4">{size.cm}</td>
+                        <td className="px-2 py-4">{size.inches}</td>
+                        <td className="px-2 py-4">{size.fit}</td>
                       </tr>
                     ))}
                   </tbody>
                 </table>
               </div>
-            </article>
-
-            <article id="construction" className="scroll-mt-8 border-t border-[#15140F]/20 py-8 sm:py-10">
-              <p className="text-xs font-bold tracking-widest text-[#B3492F]">03</p>
-              <h2 className="mt-3 text-2xl font-black uppercase tracking-tight">
+              <p className="mt-4 rounded-xl bg-brand-blue p-4 text-xs leading-6">
+                Measurements are general fit guidance, not a guarantee of fit
+                for every cap style.
+              </p>
+            </div>
+          </article>
+          <article
+            id="construction"
+            className="scroll-mt-6 border-t border-line py-7"
+          >
+            <div className="grid grid-cols-[36px_1fr] gap-4">
+              <span className="pt-1.5 text-[10px] font-bold tracking-[.12em] text-[#9a3d75]">
+                03
+              </span>
+              <h2 className="text-xl font-semibold sm:text-2xl">
                 Cap construction
               </h2>
-
-              <div className="mt-6 grid gap-6 sm:grid-cols-2">
-                <div className="border border-[#15140F]/15 p-5">
-                  <h3 className="font-black uppercase">Structured</h3>
-                  <p className="mt-3 text-sm leading-7 opacity-75">
-                    A more defined front panel helps the crown maintain
-                    its shape.
-                  </p>
-                </div>
-                <div className="border border-[#15140F]/15 p-5">
-                  <h3 className="font-black uppercase">Unstructured</h3>
-                  <p className="mt-3 text-sm leading-7 opacity-75">
-                    A softer construction follows the natural shape of
-                    your head more closely.
-                  </p>
-                </div>
-              </div>
-            </article>
-
-            <article id="between" className="scroll-mt-8 border-t border-[#15140F]/20 py-8 sm:py-10">
-              <p className="text-xs font-bold tracking-widest text-[#B3492F]">04</p>
-              <h2 className="mt-3 text-2xl font-black uppercase tracking-tight">
+            </div>
+            <p className="ml-0 mt-4 text-[13px] leading-7 text-muted sm:ml-[52px]">
+              Adjustable closures allow some flexibility, while fitted or
+              structured styles may have a more specific fit. Review each
+              product page for construction and adjustment details.
+            </p>
+          </article>
+          <article
+            id="between"
+            className="scroll-mt-6 border-t border-line py-7"
+          >
+            <div className="grid grid-cols-[36px_1fr] gap-4">
+              <span className="pt-1.5 text-[10px] font-bold tracking-[.12em] text-[#9a3d75]">
+                04
+              </span>
+              <h2 className="text-xl font-semibold sm:text-2xl">
                 Between sizes?
               </h2>
-              <p className="mt-4 text-sm leading-7 opacity-75">
-                Check the product’s stated fit range and closure type.
-                Adjustable styles offer flexibility within their intended
-                range, but not every cap fits every head size.
-              </p>
-            </article>
-
-            <div className="border-t border-[#15140F]/20 py-8">
-              <h2 className="text-xl font-black uppercase">Still unsure?</h2>
-              <p className="mt-3 text-sm leading-7 opacity-75">
-                Check the product details or visit our FAQs for more
-                information.
-              </p>
-              <Link
-                href="/faqs"
-                className="mt-5 inline-flex bg-[#15140F] px-6 py-3 text-xs font-bold uppercase tracking-[0.15em] text-[#EDE8DC] transition-colors hover:bg-[#B3492F]"
-              >
-                View FAQs
-              </Link>
             </div>
-          </div>
+            <div className="ml-0 mt-4 space-y-3 text-[13px] leading-7 text-muted sm:ml-[52px]">
+              <p>
+                If your measurement falls between references, consider the
+                closure and fit notes on the product page. If you prefer a
+                looser fit, avoid sizing down without checking the style’s
+                available adjustment range.
+              </p>
+              <p>
+                <Link className="underline" href="/faqs">
+                  Still unsure? Visit FAQs.
+                </Link>
+              </p>
+            </div>
+          </article>
         </div>
-      </section>
-
-      <footer className="border-t border-[#15140F]/15 px-6 py-8 sm:px-10">
-        <div className="mx-auto flex max-w-6xl flex-col justify-between gap-4 sm:flex-row sm:items-center">
-          <Link href="/" className="text-sm font-black uppercase tracking-[0.2em]">
-            TRSHPNDA
-          </Link>
-          <div className="flex flex-wrap gap-5 text-xs opacity-70">
-            <Link href="/shipping">Shipping</Link>
-            <Link href="/returns">Returns</Link>
-            <Link href="/faqs">FAQs</Link>
-          </div>
+      </div>
+      <footer className="flex flex-col items-start justify-between gap-3 border-t border-line py-6 sm:flex-row sm:items-center">
+        <Link className="text-[13px] font-bold tracking-[-.06em]" href="/">
+          TRSHPNDA®
+        </Link>
+        <p className="text-[10px] text-muted">
+          Headwear for your own frequency.
+        </p>
+        <div className="flex flex-wrap gap-4 text-[10px] font-semibold">
+          <Link href="/products">Shop caps</Link>
+          <Link href="/faqs">FAQs</Link>
+          <Link href="/returns">Returns</Link>
         </div>
       </footer>
     </main>

@@ -1,9 +1,8 @@
-
 import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Shipping & Delivery | TRSHPNDA",
+  title: "Shipping & Delivery",
   description:
     "Learn about TRSHPNDA order processing, shipping, delivery estimates, and tracking.",
 };
@@ -12,12 +11,14 @@ const sections = [
   {
     title: "Order Processing",
     content: (
-      <p>
-        Orders are processed within <strong>1–3 business days</strong>.
-        Processing times may vary during product launches and peak periods.
-        Once your order ships, you’ll receive a confirmation email with
-        tracking information where available.
-      </p>
+      <>
+        <p>
+          Orders are processed within <strong>1–3 business days</strong>.
+          Processing times may vary during product launches and peak periods.
+          Once your order ships, you’ll receive a confirmation email with
+          tracking information where available.
+        </p>
+      </>
     ),
   },
   {
@@ -25,20 +26,20 @@ const sections = [
     content: (
       <>
         <p>
-          Available shipping methods, costs, and estimated delivery times
-          are displayed at checkout before you complete your purchase.
+          Available shipping methods, costs, and estimated delivery times are
+          displayed at checkout before you complete your purchase.
         </p>
-        <ul className="mt-4 list-disc space-y-2 pl-5">
+        <ul>
           <li>Standard shipping: estimated delivery shown at checkout.</li>
           <li>Express shipping: available where offered.</li>
           <li>
-            International shipping: destinations and rates are shown at
-            checkout where available.
+            International shipping: destinations and rates are shown at checkout
+            where available.
           </li>
         </ul>
-        <p className="mt-4">
-          Delivery estimates are not guaranteed. Carrier disruptions,
-          weather, customs, and other circumstances may cause delays.
+        <p>
+          Delivery estimates are not guaranteed. Carrier disruptions, weather,
+          customs, and other circumstances may cause delays.
         </p>
       </>
     ),
@@ -48,8 +49,8 @@ const sections = [
     content: (
       <p>
         When tracking is available, you’ll find the tracking link in your
-        shipping confirmation email. Updates may take some time to appear
-        after dispatch.
+        shipping confirmation email. Updates may take some time to appear after
+        dispatch.
       </p>
     ),
   },
@@ -57,9 +58,9 @@ const sections = [
     title: "Duties & Taxes",
     content: (
       <p>
-        Applicable taxes are calculated at checkout. International orders
-        may be subject to customs duties, import taxes, or other fees
-        depending on the destination.
+        Applicable taxes are calculated at checkout. International orders may be
+        subject to customs duties, import taxes, or other fees depending on the
+        destination.
       </p>
     ),
   },
@@ -67,135 +68,88 @@ const sections = [
 
 export default function ShippingPage() {
   return (
-    <main className="min-h-screen bg-[#EDE8DC] text-[#15140F]">
-      {/* Page heading */}
-      <section className="border-b border-[#15140F]/15 px-6 py-16 sm:px-10 sm:py-24">
-        <div className="mx-auto max-w-6xl">
+    <main className="mx-auto min-h-screen w-full max-w-[1600px] bg-paper px-4 sm:px-6 lg:px-16">
+      <header className="border-b border-line py-10 sm:py-20">
+        <div className="mx-auto max-w-7xl">
           <Link
+            className="text-[10px] font-bold uppercase tracking-[.16em]"
             href="/"
-            className="text-xs font-bold uppercase tracking-[0.2em] opacity-60 hover:opacity-100"
           >
-            TRSHPNDA / Support
+            TRSHPNDA / Support ↗
           </Link>
-
-          <p className="mt-12 text-xs font-bold uppercase tracking-[0.25em] text-[#B3492F]">
+          <p className="mt-10 text-[10px] font-bold uppercase tracking-[.16em] text-[#9a3d75]">
             The essentials
           </p>
-
-          <h1 className="mt-4 max-w-4xl text-5xl font-black uppercase leading-[0.95] tracking-tight sm:text-7xl">
+          <h1 className="mt-4 font-display text-5xl leading-[.95] tracking-[-.07em] sm:text-8xl">
             Shipping
             <br />
-            & Delivery.
+            &amp; Delivery.
           </h1>
-
-          <p className="mt-6 max-w-xl text-base leading-7 opacity-75 sm:text-lg">
-            Good headwear is worth the wait. Here’s what to know about
-            getting your TRSHPNDA order to your door.
+          <p className="mt-6 max-w-xl text-sm leading-7 text-muted sm:text-base">
+            Good headwear is worth the wait. Here’s what to know about getting
+            your TRSHPNDA order to your door.
           </p>
         </div>
-      </section>
-
-      {/* Policy content */}
-      <section className="px-6 py-12 sm:px-10 sm:py-16">
-        <div className="mx-auto grid max-w-6xl gap-12 md:grid-cols-[220px_1fr] md:gap-20">
-          <aside className="h-fit md:sticky md:top-8">
-            <p className="text-xs font-bold uppercase tracking-[0.2em]">
-              On this page
-            </p>
-
-            <nav className="mt-5 flex flex-wrap gap-3 md:flex-col md:gap-4">
-              {sections.map((section, index) => (
-                <a
-                  key={section.title}
-                  href={`#section-${index}`}
-                  className="text-sm opacity-65 transition-opacity hover:opacity-100"
-                >
-                  {section.title}
-                </a>
-              ))}
-            </nav>
-
-            <div className="mt-8 hidden border-t border-[#15140F]/15 pt-5 md:block">
-              <p className="text-sm leading-6 opacity-65">
-                Need a hand with an order?
-              </p>
-              <Link
-                href="/faqs"
-                className="mt-2 inline-block text-sm font-bold underline underline-offset-4"
-              >
-                Visit FAQs
-              </Link>
-            </div>
-          </aside>
-
-          <div className="max-w-3xl">
-            <p className="mb-10 text-sm leading-7 opacity-70">
-              Last updated: October 2026
-            </p>
-
+      </header>
+      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 py-10 sm:py-16 lg:grid-cols-[220px_minmax(0,760px)] lg:gap-24">
+        <aside className="self-start lg:sticky lg:top-6">
+          <p className="text-[10px] font-bold uppercase tracking-[.16em]">
+            On this page
+          </p>
+          <nav className="mt-5 flex flex-wrap gap-2 lg:flex-col lg:gap-4">
             {sections.map((section, index) => (
-              <article
+              <a
                 key={section.title}
-                id={`section-${index}`}
-                className="scroll-mt-8 border-t border-[#15140F]/20 py-8 sm:py-10"
+                className="rounded-full bg-surface px-3 py-2 text-xs text-muted hover:text-ink lg:bg-transparent lg:px-0"
+                href={`#section-${index}`}
               >
-                <div className="grid gap-4 sm:grid-cols-[44px_1fr] sm:gap-6">
-                  <span className="text-xs font-bold tracking-widest text-[#B3492F]">
-                    0{index + 1}
-                  </span>
-
-                  <div>
-                    <h2 className="text-xl font-black uppercase tracking-tight sm:text-2xl">
-                      {section.title}
-                    </h2>
-
-                    <div className="mt-4 text-sm leading-7 opacity-80 sm:text-base">
-                      {section.content}
-                    </div>
-                  </div>
-                </div>
-              </article>
+                {section.title}
+              </a>
             ))}
-
-            <div className="mt-4 border-t border-[#15140F]/20 py-8">
-              <h2 className="text-xl font-black uppercase tracking-tight">
-                Need help?
-              </h2>
-              <p className="mt-3 text-sm leading-7 opacity-75">
-                Contact our team with your order number and we’ll help
-                you find the next step.
-              </p>
-              <Link
-                href="/faqs"
-                className="mt-5 inline-flex items-center justify-center bg-[#15140F] px-6 py-3 text-xs font-bold uppercase tracking-[0.15em] text-[#EDE8DC] transition-colors hover:bg-[#B3492F]"
-              >
-                Get support
-              </Link>
-            </div>
-          </div>
+          </nav>
+          <p className="mt-7 text-xs leading-6 text-muted">
+            Need a hand with an order?{" "}
+            <Link className="underline" href="/faqs">
+              Visit FAQs
+            </Link>
+          </p>
+        </aside>
+        <div>
+          <p className="mb-6 text-[11px] text-muted">
+            Shipping options and prices are confirmed at checkout.
+          </p>
+          {sections.map((section, index) => (
+            <article
+              key={section.title}
+              id={`section-${index}`}
+              className="scroll-mt-6 border-t border-line py-7"
+            >
+              <div className="grid grid-cols-[36px_1fr] gap-4">
+                <span className="pt-1.5 text-[10px] font-bold tracking-[.12em] text-[#9a3d75]">
+                  0{index + 1}
+                </span>
+                <h2 className="text-xl font-semibold tracking-[-.04em] sm:text-2xl">
+                  {section.title}
+                </h2>
+              </div>
+              <div className="ml-0 mt-4 space-y-3 text-[13px] leading-7 text-muted sm:ml-[52px] [&_li]:ml-5 [&_li]:list-disc [&_ol_li]:list-decimal [&_ul]:my-3">
+                {section.content}
+              </div>
+            </article>
+          ))}
         </div>
-      </section>
-
-      {/* Bottom navigation */}
-      <footer className="border-t border-[#15140F]/15 px-6 py-8 sm:px-10">
-        <div className="mx-auto flex max-w-6xl flex-col justify-between gap-4 sm:flex-row sm:items-center">
-          <Link
-            href="/"
-            className="text-sm font-black uppercase tracking-[0.2em]"
-          >
-            TRSHPNDA
-          </Link>
-          <div className="flex flex-wrap gap-x-5 gap-y-3 text-xs opacity-70">
-            <Link href="/returns" className="hover:opacity-100">
-              Returns
-            </Link>
-            <Link href="/faqs" className="hover:opacity-100">
-              FAQs
-            </Link>
-            <Link href="/size-guide" className="hover:opacity-100">
-              Size Guide
-            </Link>
-          </div>
+      </div>
+      <footer className="flex flex-col items-start justify-between gap-3 border-t border-line py-6 sm:flex-row sm:items-center">
+        <Link className="text-[13px] font-bold tracking-[-.06em]" href="/">
+          TRSHPNDA®
+        </Link>
+        <p className="text-[10px] text-muted">
+          Headwear for your own frequency.
+        </p>
+        <div className="flex flex-wrap gap-4 text-[10px] font-semibold">
+          <Link href="/faqs">FAQs</Link>
+          <Link href="/returns">Returns</Link>
+          <Link href="/size-guide">Size guide</Link>
         </div>
       </footer>
     </main>

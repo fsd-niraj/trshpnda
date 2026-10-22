@@ -1,12 +1,12 @@
-import type { MetadataRoute } from 'next';
-import { siteUrl } from './data';
+import type { MetadataRoute } from "next";
+import { siteUrl } from "./data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
       url: siteUrl,
       lastModified: new Date(),
-      changeFrequency: 'weekly',
+      changeFrequency: "weekly",
       priority: 1,
     },
   ];

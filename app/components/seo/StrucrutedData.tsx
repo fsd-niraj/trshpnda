@@ -1,4 +1,3 @@
-
 import { siteUrl } from "@/app/data";
 
 function JsonLd({ data }: { data: Record<string, unknown> }) {

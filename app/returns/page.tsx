@@ -1,11 +1,10 @@
-
 import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Returns & Refunds | TRSHPNDA",
+  title: "Returns & Refunds",
   description:
-    "Review the TRSHPNDA 30-day return policy, refund process, and return conditions.",
+    "Review the TRSHPNDA return window, refund process, and return conditions.",
 };
 
 const sections = [
@@ -25,15 +24,18 @@ const sections = [
     content: (
       <>
         <p>To qualify for a return, your item must be:</p>
-        <ul className="mt-4 list-disc space-y-2 pl-5">
+        <ul>
           <li>Unworn and unused.</li>
           <li>Free from marks, stains, odors, or damage.</li>
-          <li>Returned with original packaging, tags, and accessories where applicable.</li>
+          <li>
+            Returned with original packaging, tags, and accessories where
+            applicable.
+          </li>
           <li>Accompanied by proof of purchase or your order number.</li>
         </ul>
-        <p className="mt-4">
-          Items showing signs of wear or damage may be ineligible for a
-          refund. Please handle and try on headwear carefully.
+        <p>
+          Items showing signs of wear or damage may be ineligible for a refund.
+          Please handle and try on headwear carefully.
         </p>
       </>
     ),
@@ -42,15 +44,16 @@ const sections = [
     title: "How to Start a Return",
     content: (
       <>
-        <ol className="list-decimal space-y-2 pl-5">
+        <ol>
           <li>Contact our team within 30 days of delivery.</li>
           <li>Include your order number and the item you wish to return.</li>
           <li>Follow the return instructions provided by our team.</li>
           <li>Send the item using the approved return method.</li>
         </ol>
-        <p className="mt-4">
-          Contact <strong>[support email]</strong> to begin. Please wait for
-          return instructions before sending an item back.
+        <p>
+          Please use the support contact provided in your order confirmation or
+          on the official store contact page. Wait for return instructions
+          before sending an item back.
         </p>
       </>
     ),
@@ -59,10 +62,9 @@ const sections = [
     title: "Refunds",
     content: (
       <p>
-        Once your return arrives and passes inspection, we’ll notify you
-        of the outcome. Approved refunds are issued to your original payment
-        method. Please allow <strong>[5–10 business days]</strong> after
-        approval for the refund to appear, depending on your payment provider.
+        Once your return arrives and passes inspection, we’ll notify you of the
+        outcome. Approved refunds are issued to your original payment method.
+        The time it takes to appear depends on your payment provider.
       </p>
     ),
   },
@@ -70,10 +72,10 @@ const sections = [
     title: "Return Shipping",
     content: (
       <p>
-        Return shipping costs are <strong>[paid by the customer / covered by
-          TRSHPNDA]</strong>, except where applicable law requires otherwise or
-        an incorrect or defective item was sent. Original shipping charges
-        are <strong>[non-refundable, subject to applicable law]</strong>.
+        Return shipping arrangements and responsibility should be confirmed with
+        the support team before sending an item back. Original shipping charges
+        and any exceptions are subject to the store’s confirmed policy and
+        applicable law.
       </p>
     ),
   },
@@ -81,9 +83,9 @@ const sections = [
     title: "Damaged or Incorrect Items",
     content: (
       <p>
-        If your order arrives damaged or you receive the wrong item, contact
-        us with your order number and clear photos of the issue. We’ll review
-        the details and help with the next steps.
+        If your order arrives damaged or you receive the wrong item, contact the
+        support team with your order number and clear photos of the issue. We’ll
+        review the details and help with the next steps.
       </p>
     ),
   },
@@ -91,9 +93,9 @@ const sections = [
     title: "Exchanges & Final Sale",
     content: (
       <p>
-        Exchanges depend on product availability and may require returning
-        the original item before placing a new order. Items marked Final Sale
-        are not eligible for return or exchange, except where required by law.
+        Exchanges depend on product availability and may require returning the
+        original item before placing a new order. Any final-sale restrictions
+        are subject to applicable law.
       </p>
     ),
   },
@@ -101,124 +103,104 @@ const sections = [
 
 export default function ReturnsPage() {
   return (
-    <main className="min-h-screen bg-[#EDE8DC] text-[#15140F]">
-      <section className="border-b border-[#15140F]/15 px-6 py-16 sm:px-10 sm:py-24">
-        <div className="mx-auto max-w-6xl">
+    <main className="mx-auto min-h-screen w-full max-w-[1600px] bg-paper px-4 sm:px-6 lg:px-16">
+      <header className="border-b border-line py-10 sm:py-20">
+        <div className="mx-auto max-w-7xl">
           <Link
+            className="text-[10px] font-bold uppercase tracking-[.16em]"
             href="/"
-            className="text-xs font-bold uppercase tracking-[0.2em] opacity-60 hover:opacity-100"
           >
-            TRSHPNDA / Support
+            TRSHPNDA / Support ↗
           </Link>
-
-          <p className="mt-12 text-xs font-bold uppercase tracking-[0.25em] text-[#B3492F]">
+          <p className="mt-10 text-[10px] font-bold uppercase tracking-[.16em] text-[#9a3d75]">
             No hard feelings
           </p>
-
-          <h1 className="mt-4 max-w-4xl text-5xl font-black uppercase leading-[0.95] tracking-tight sm:text-7xl">
+          <h1 className="mt-4 font-display text-5xl leading-[.95] tracking-[-.07em] sm:text-8xl">
             Returns
             <br />
-            & Refunds.
+            &amp; Refunds.
           </h1>
-
-          <p className="mt-6 max-w-xl text-base leading-7 opacity-75 sm:text-lg">
-            We want you to feel good about what you wear. If it’s not the
-            right fit, here’s how to return an eligible purchase.
+          <p className="mt-6 max-w-xl text-sm leading-7 text-muted sm:text-base">
+            We want you to feel good about what you wear. If it’s not the right
+            fit, here’s how to request a return for an eligible purchase.
           </p>
         </div>
-      </section>
-
-      <section className="px-6 py-12 sm:px-10 sm:py-16">
-        <div className="mx-auto grid max-w-6xl gap-12 md:grid-cols-[220px_1fr] md:gap-20">
-          <aside className="h-fit md:sticky md:top-8">
-            <p className="text-xs font-bold uppercase tracking-[0.2em]">
-              On this page
-            </p>
-            <nav className="mt-5 flex flex-wrap gap-3 md:flex-col md:gap-4">
-              {sections.map((section, index) => (
-                <a
-                  key={section.title}
-                  href={`#section-${index}`}
-                  className="text-sm opacity-65 transition-opacity hover:opacity-100"
-                >
-                  {section.title}
-                </a>
-              ))}
-            </nav>
-          </aside>
-
-          <div className="max-w-3xl">
-            <div className="mb-8 border border-[#15140F]/15 p-5 sm:p-6">
-              <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#B3492F]">
-                The return window
-              </p>
-              <p className="mt-3 text-4xl font-black uppercase tracking-tight">
-                30 days.
-              </p>
-              <p className="mt-2 text-sm leading-7 opacity-75">
-                From delivery, for eligible items that meet our return
-                requirements.
-              </p>
-            </div>
-
+      </header>
+      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 py-10 sm:py-16 lg:grid-cols-[220px_minmax(0,760px)] lg:gap-24">
+        <aside className="self-start lg:sticky lg:top-6">
+          <p className="text-[10px] font-bold uppercase tracking-[.16em]">
+            On this page
+          </p>
+          <nav className="mt-5 flex flex-wrap gap-2 lg:flex-col lg:gap-4">
             {sections.map((section, index) => (
-              <article
+              <a
                 key={section.title}
-                id={`section-${index}`}
-                className="scroll-mt-8 border-t border-[#15140F]/20 py-8 sm:py-10"
+                className="rounded-full bg-surface px-3 py-2 text-xs text-muted hover:text-ink lg:bg-transparent lg:px-0"
+                href={`#section-${index}`}
               >
-                <div className="grid gap-4 sm:grid-cols-[44px_1fr] sm:gap-6">
-                  <span className="text-xs font-bold tracking-widest text-[#B3492F]">
-                    0{index + 1}
-                  </span>
-                  <div>
-                    <h2 className="text-xl font-black uppercase tracking-tight sm:text-2xl">
-                      {section.title}
-                    </h2>
-                    <div className="mt-4 text-sm leading-7 opacity-80 sm:text-base">
-                      {section.content}
-                    </div>
-                  </div>
-                </div>
-              </article>
+                {section.title}
+              </a>
             ))}
-
-            <div className="border-t border-[#15140F]/20 py-8">
-              <h2 className="text-xl font-black uppercase">
-                Need to start a return?
-              </h2>
-              <p className="mt-3 text-sm leading-7 opacity-75">
-                Contact our team with your order number to get started.
-              </p>
-              <Link
-                href="/faqs"
-                className="mt-5 inline-flex bg-[#15140F] px-6 py-3 text-xs font-bold uppercase tracking-[0.15em] text-[#EDE8DC] transition-colors hover:bg-[#B3492F]"
-              >
-                Read FAQs
-              </Link>
-            </div>
-
-            <p className="mt-6 text-xs leading-6 opacity-60">
-              This policy does not limit any rights you may have under
-              applicable consumer protection laws.
+          </nav>
+        </aside>
+        <div>
+          <div className="rounded-2xl bg-brand-green p-6 sm:rounded-[20px]">
+            <p className="mb-3 text-[10px] font-bold uppercase tracking-[.16em]">
+              The return window
+            </p>
+            <strong className="block text-5xl font-semibold tracking-[-.06em] sm:text-6xl">
+              30 days.
+            </strong>
+            <p className="mt-2 max-w-lg text-xs leading-6">
+              From delivery, for eligible items that meet the store’s return
+              requirements.
             </p>
           </div>
+          {sections.map((section, index) => (
+            <article
+              key={section.title}
+              id={`section-${index}`}
+              className="scroll-mt-6 border-t border-line py-7"
+            >
+              <div className="grid grid-cols-[36px_1fr] gap-4">
+                <span className="pt-1.5 text-[10px] font-bold tracking-[.12em] text-[#9a3d75]">
+                  0{index + 1}
+                </span>
+                <h2 className="text-xl font-semibold tracking-[-.04em] sm:text-2xl">
+                  {section.title}
+                </h2>
+              </div>
+              <div className="ml-0 mt-4 space-y-3 text-[13px] leading-7 text-muted sm:ml-[52px] [&_li]:ml-5 [&_li]:list-disc [&_ol_li]:list-decimal [&_ul]:my-3">
+                {section.content}
+              </div>
+            </article>
+          ))}
+          <p className="mt-6 text-[11px] leading-6 text-muted">
+            Before publishing, confirm the return-contact method, shipping
+            responsibility, refund timing, and any final-sale terms. This page
+            does not limit rights under applicable consumer protection laws.
+          </p>
+          <p className="mt-6">
+            <Link
+              className="inline-flex items-center gap-5 rounded-full bg-ink px-5 py-3 text-[10px] font-bold uppercase text-surface transition hover:bg-brand-green hover:text-ink"
+              href="/faqs"
+            >
+              Read FAQs ↗
+            </Link>
+          </p>
         </div>
-      </section>
-
-      <footer className="border-t border-[#15140F]/15 px-6 py-8 sm:px-10">
-        <div className="mx-auto flex max-w-6xl flex-col justify-between gap-4 sm:flex-row sm:items-center">
-          <Link
-            href="/"
-            className="text-sm font-black uppercase tracking-[0.2em]"
-          >
-            TRSHPNDA
-          </Link>
-          <div className="flex flex-wrap gap-5 text-xs opacity-70">
-            <Link href="/shipping">Shipping</Link>
-            <Link href="/faqs">FAQs</Link>
-            <Link href="/size-guide">Size Guide</Link>
-          </div>
+      </div>
+      <footer className="flex flex-col items-start justify-between gap-3 border-t border-line py-6 sm:flex-row sm:items-center">
+        <Link className="text-[13px] font-bold tracking-[-.06em]" href="/">
+          TRSHPNDA®
+        </Link>
+        <p className="text-[10px] text-muted">
+          Headwear for your own frequency.
+        </p>
+        <div className="flex flex-wrap gap-4 text-[10px] font-semibold">
+          <Link href="/shipping">Shipping</Link>
+          <Link href="/faqs">FAQs</Link>
+          <Link href="/size-guide">Size guide</Link>
         </div>
       </footer>
     </main>

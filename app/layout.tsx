@@ -1,37 +1,35 @@
-
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { ReactLenis } from "lenis/react";
+import "./globals.css";
 
 import {
   OrganizationSchema,
   WebsiteSchema,
 } from "./components/seo/StrucrutedData";
-
-import "./globals.css";
 import { openGraphImageUrl, siteUrl } from "./data";
+import { Oswald, DM_Sans } from "next/font/google";
 
-const geist = Geist({
+const oswald = Oswald({
   subsets: ["latin"],
-  variable: "--font-geist",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-oswald",
+});
+
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  variable: "--font-dm-sans",
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-
-  icons: {
-    icon: "/trshpnda_favicon.ico",
-  },
-
+  icons: { icon: "/trshpnda_favicon.ico" },
   title: {
     default: "TRSHPNDA — Premium Everyday Headwear",
     template: "%s | TRSHPNDA",
   },
-
   description:
     "Shop premium caps designed for everyday wear. Discover structured, washed, and minimalist headwear made with quality materials and modern style.",
-
   keywords: [
     "premium caps",
     "streetwear caps",
@@ -40,14 +38,9 @@ export const metadata: Metadata = {
     "cotton caps",
     "washed caps",
   ],
-
   authors: [{ name: "TRSHPNDA" }],
   creator: "TRSHPNDA",
   publisher: "TRSHPNDA",
-
-  // Set canonical URLs at the individual page level.
-  // Do not set "/" globally for every route.
-
   openGraph: {
     type: "website",
     locale: "en_CA",
@@ -65,15 +58,12 @@ export const metadata: Metadata = {
       },
     ],
   },
-
   twitter: {
     card: "summary_large_image",
     title: "TRSHPNDA — Premium Everyday Headwear",
-    description:
-      "Discover premium caps designed for everyday wear.",
+    description: "Discover premium caps designed for everyday wear.",
     images: [openGraphImageUrl],
   },
-
   robots: {
     index: true,
     follow: true,
@@ -85,28 +75,22 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
-
   category: "fashion",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en-CA">
-      <body className={`${geist.variable} antialiased`}>
+      <body
+        className={`m-0 bg-paper font-sans text-ink antialiased ${oswald.variable} ${dmSans.variable}`}
+      >
         <OrganizationSchema />
         <WebsiteSchema />
-
-        <ReactLenis
-          root
-          options={{ lerp: 0.1, duration: 1.2 }}
-        >
+        <ReactLenis root options={{ lerp: 0.1, duration: 1.2 }}>
           {children}
         </ReactLenis>
-
         <Analytics />
       </body>
     </html>
