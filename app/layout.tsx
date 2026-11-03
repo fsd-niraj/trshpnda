@@ -25,11 +25,11 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   icons: { icon: "/trshpnda_favicon.ico" },
   title: {
-    default: "TRSHPNDA — Premium Everyday Headwear",
+    default: "TRSHPNDA - Everyday Headwear",
     template: "%s | TRSHPNDA",
   },
   description:
-    "Shop premium caps designed for everyday wear. Discover structured, washed, and minimalist headwear made with quality materials and modern style.",
+    "Discover TRSHPNDA, a headwear brand inspired by the trash panda. Explore raccoon-inspired caps designed for everyday wear.",
   keywords: [
     "premium caps",
     "streetwear caps",
@@ -46,9 +46,9 @@ export const metadata: Metadata = {
     locale: "en_CA",
     url: siteUrl,
     siteName: "TRSHPNDA",
-    title: "TRSHPNDA — Premium Everyday Headwear",
+    title: "TRSHPNDA - Everyday Headwear",
     description:
-      "Discover premium caps designed for everyday wear. Explore the TRSHPNDA collection.",
+      "Everyday headwear inspred by the trash panda.",
     images: [
       {
         url: openGraphImageUrl,
@@ -60,8 +60,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "TRSHPNDA — Premium Everyday Headwear",
-    description: "Discover premium caps designed for everyday wear.",
+    title: "TRSHPNDA - Everyday Headwear",
+    description: "Everyday headwear inspred by the trash panda.",
     images: [openGraphImageUrl],
   },
   robots: {
